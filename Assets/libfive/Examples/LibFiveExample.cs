@@ -4,13 +4,15 @@ namespace libfivesharp
 {
     public class LibFiveExample : MonoBehaviour
     {
+        [SerializeField]
         [Range(10f, 30f)]
-        public float resolution = 15;
+        float resolution = 15;
 
+        [SerializeField]
         [Tooltip("Splits the shared vertices on the output libfive mesh and selectively " +
           "rejoins them to visually preserve the sharp-edged details of the output model " +
           "in rendering.")]
-        public bool sharpEdges = false;
+        bool sharpEdges = false;
 
         void Update()
         {
