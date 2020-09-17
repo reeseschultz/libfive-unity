@@ -63,7 +63,6 @@ public static class LFNormalCalculation
 
                 splitNormals.Complete();
 
-                // Split the splittable vertices.
                 var splitVertices = new List<Vector3>(vertices);
 
                 for (var i = 0; i < tris.Length; ++i)
@@ -77,12 +76,12 @@ public static class LFNormalCalculation
                 toFill.SetVertices(splitVertices);
                 toFill.triangles = tris;
                 toFill.RecalculateNormals();
-
-                vertices.Dispose();
-                triangles.Dispose();
-                normals.Dispose();
-                triangleIndicesToSplit.Dispose();
             }
+
+            vertices.Dispose();
+            triangles.Dispose();
+            normals.Dispose();
+            triangleIndicesToSplit.Dispose();
         }
 
         Profiler.EndSample();
