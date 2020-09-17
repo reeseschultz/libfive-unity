@@ -3,10 +3,11 @@ using UnityEngine;
 using UnityEngine.Profiling;
 using Unity.Jobs;
 using Unity.Collections;
+using Unity.Burst;
 
 public static class LFNormalCalculation
 {
-    //[Unity.Burst.BurstCompile]
+    [BurstCompile]
     public struct SplitNormalsJob : IJobParallelFor
     {
         [ReadOnly]
@@ -30,9 +31,9 @@ public static class LFNormalCalculation
             var ySplit = Vector3.Angle(normals[triangles[i].y], normal) > vertexSplittingAngle;
             var zSplit = Vector3.Angle(normals[triangles[i].z], normal) > vertexSplittingAngle;
 
-            if (xSplit) triangleIndicesToSplit[(i * 3)] = 255; //X is a malcontent
-            if (ySplit) triangleIndicesToSplit[(i * 3) + 1] = 255; //Y is a malcontent
-            if (zSplit) triangleIndicesToSplit[(i * 3) + 2] = 255; //Z is a malcontent
+            if (xSplit) triangleIndicesToSplit[(i * 3)] = 255; // (X is a malcontent.)
+            if (ySplit) triangleIndicesToSplit[(i * 3) + 1] = 255; // (Y is a malcontent.)
+            if (zSplit) triangleIndicesToSplit[(i * 3) + 2] = 255; // (Z is a malcontent.)
         }
     }
 
